@@ -488,7 +488,7 @@ function ins_send_mail($data)
 
 	$mail = new PHPMailer(true);
 	try {
-		$mail->SMTPDebug = 2;
+		$mail->SMTPDebug = 0;
 		$mail->isSMTP();
 		$mail->Host       = $MAIL_HOST;
 		$mail->SMTPAuth   = true;
@@ -496,6 +496,7 @@ function ins_send_mail($data)
 		$mail->Password   = $MAIL_PASSWORD;
 		$mail->SMTPSecure = $MAIL_ENCRYPT;
 		$mail->Port       = $MAIL_PORT;
+		$mail->CharSet    = 'UTF-8';
 	
 		$mail->setFrom('info@intuitionstudio.co', 'Intuition Studio');
 		foreach ($receptors as $rkey => $rval) {

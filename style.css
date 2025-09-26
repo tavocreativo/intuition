@@ -1129,3 +1129,6 @@ img {
   width: 220px;
   position: relative;
 }
+div.g-recaptcha{
+display: none !important;
+}

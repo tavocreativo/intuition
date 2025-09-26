@@ -414,6 +414,7 @@ we were well fed and drunk all the time!</p>
 							role="alert"></div>
 						</div>
 						<?php wp_nonce_field( 'mi_accion_formulario', 'mi_nonce' ); ?>
+						
 
 						<div class="g-recaptcha"
 						data-sitekey="6LfpDNYrAAAAAIM3IHJUuBCnzyUXCbnM3KJMiECg"
