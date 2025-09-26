@@ -11,6 +11,8 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/custom.js?=v2"></script>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/form.js?=v<?= randomCode() ?>"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({

@@ -382,7 +382,7 @@ we were well fed and drunk all the time!</p>
 
 					<div id="sendmessage">Your message has been sent. Thank you!</div>
 					<div id="errormessage"></div>
-					<form action="/" method="post" role="form" class="contactForm" id="formContact">
+					<form class="contactForm" id="form-contact">
 						<div class="form-group">
 							<input type="text" name="name" class="form-control input-text" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required="" />
 							<div class="validation"></div>
@@ -403,7 +403,23 @@ we were well fed and drunk all the time!</p>
 							<textarea class="form-control input-text text-area" name="message" id="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensaje" required=""></textarea>
 							<div class="validation"></div>
 						</div>
-						<div class="text-center"><button type="submit" class="input-btn">Enviar Mensaje</button></div>
+
+						<div>
+							<div id="contactSuccess"
+							class="alert alert-success parrafo d-none"
+							role="alert"></div>
+
+							<div id="contactError"
+							class="alert alert-danger parrafo d-none"
+							role="alert"></div>
+						</div>
+						<?php wp_nonce_field( 'mi_accion_formulario', 'mi_nonce' ); ?>
+
+						<div class="g-recaptcha"
+						data-sitekey="6LfpDNYrAAAAAIM3IHJUuBCnzyUXCbnM3KJMiECg"
+						data-callback="enviarFormulario"
+						data-size="invisible"></div>
+						<div class="text-center"><button type="submit" class="input-btn" id="send-email-contact">Enviar Mensaje</button></div>
 					</form>
 				</div>
 			</div>
@@ -421,39 +437,39 @@ we were well fed and drunk all the time!</p>
 
 <?php get_footer(); ?>
 <script>
-	$("#formContact").submit(function(e) {
-		e.preventDefault()
+	// $("#formContact").submit(function(e) {
+	// 	e.preventDefault()
 
-		var datosform = new FormData();
-		var name = $("#name").val();
-		var telefono = $("#telefono").val();
-		var email = $("#email").val();
-		var subject = $("#subject").val();
-		var message = $("#message").val();
-		if (name != "" && telefono != "" && email != "" && subject != "" && message != "") {
-			datosform.append('name', name);
-			datosform.append('telefono', telefono);
-			datosform.append('email', email);
-			datosform.append('subject', subject);
-			datosform.append('message', message);
-			datosform.append("action", "send_contact_form")
-			alert("Se está enviando el mensaje.")
-			$("#formContact")[0].reset();
+	// 	var datosform = new FormData();
+	// 	var name = $("#name").val();
+	// 	var telefono = $("#telefono").val();
+	// 	var email = $("#email").val();
+	// 	var subject = $("#subject").val();
+	// 	var message = $("#message").val();
+	// 	if (name != "" && telefono != "" && email != "" && subject != "" && message != "") {
+	// 		datosform.append('name', name);
+	// 		datosform.append('telefono', telefono);
+	// 		datosform.append('email', email);
+	// 		datosform.append('subject', subject);
+	// 		datosform.append('message', message);
+	// 		datosform.append("action", "send_contact_form")
+	// 		alert("Se está enviando el mensaje.")
+	// 		$("#formContact")[0].reset();
 
-			$.ajax({
-				url: "<?= admin_url("admin-ajax.php") ?>",
-				type: "POST",
-				data: datosform,
-				cache: false,
-				contentType: false,
-				processData: false,
-				success: function(data) {
-					alert("Mensaje enviado con éxito, le responderemos lo más pronto posible");
-				},
-			});
-		} else {
-			alert("Todos los campos son obligatorios");
-		}
+	// 		$.ajax({
+	// 			url: "<?= admin_url("admin-ajax.php") ?>",
+	// 			type: "POST",
+	// 			data: datosform,
+	// 			cache: false,
+	// 			contentType: false,
+	// 			processData: false,
+	// 			success: function(data) {
+	// 				alert("Mensaje enviado con éxito, le responderemos lo más pronto posible");
+	// 			},
+	// 		});
+	// 	} else {
+	// 		alert("Todos los campos son obligatorios");
+	// 	}
 
-	});
+	// });
 </script>

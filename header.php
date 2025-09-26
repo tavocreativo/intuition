@@ -23,6 +23,10 @@
 
 
     <?php wp_head(); ?>
+    <script>
+        const ajaxUrlAdmin = '<?php echo admin_url('admin-ajax.php'); ?>';
+        const lang = 'es';
+    </script>
 </head>
 
 <body>

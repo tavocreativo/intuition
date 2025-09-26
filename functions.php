@@ -487,25 +487,32 @@ function ins_send_mail($data)
 	$MAIL_ENCRYPT = env("mail_encrypt");
 
 	$mail = new PHPMailer(true);
-	$mail->SMTPDebug = 2;
-	$mail->isSMTP();
-	$mail->Host       = $MAIL_HOST;
-	$mail->SMTPAuth   = true;
-	$mail->Username   = $MAIL_USER;
-	$mail->Password   = $MAIL_PASSWORD;
-	$mail->SMTPSecure = $MAIL_ENCRYPT;
-	$mail->Port       = $MAIL_PORT;
-
-	$mail->setFrom('info@intuitionstudio.co', 'Intuition Studio');
-	foreach ($receptors as $rkey => $rval) {
-		$mail->addCC($rkey, $rval);
-	}
-	$mail->CharSet = 'UTF-8';
-	$mail->isHTML(true);
-	$mail->Subject = $subject;
-	$mail->Body    = $html;
-
-	return $mail->send();
+	try {
+		$mail->SMTPDebug = 2;
+		$mail->isSMTP();
+		$mail->Host       = $MAIL_HOST;
+		$mail->SMTPAuth   = true;
+		$mail->Username   = $MAIL_USER;
+		$mail->Password   = $MAIL_PASSWORD;
+		$mail->SMTPSecure = $MAIL_ENCRYPT;
+		$mail->Port       = $MAIL_PORT;
+	
+		$mail->setFrom('info@intuitionstudio.co', 'Intuition Studio');
+		foreach ($receptors as $rkey => $rval) {
+			$mail->addCC($rkey, $rval);
+		}
+		$mail->CharSet = 'UTF-8';
+		$mail->isHTML(true);
+		$mail->Subject = $subject;
+		$mail->Body    = $html;
+	
+		return $mail->send();
+	} catch (Exception $e) {
+        // Guardar en log de WP
+        error_log("Error enviando correo: " . $mail->ErrorInfo);
+        // También devolver el error para manejarlo fuera
+        return "Mailer Error: " . $mail->ErrorInfo;
+    }
 }
 
 
