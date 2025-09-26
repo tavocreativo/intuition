@@ -1,0 +1,13 @@
+{
+  "name": "web-intuition-old",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "npx sass --watch assets/scss/index.scss:custom.min.css --style compressed"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.85.1"
+  }
+}
