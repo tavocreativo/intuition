@@ -1,7 +1,9 @@
 <?php
 
-
-require '.env.php';
+$envPath = dirname(ABSPATH) . '/configmail/.env.php';
+require $envPath;
+// require '.env.php';
+// require '/home/tvdachdl/config/env.php';
 require 'includes/security-functions.php';
 require 'includes/vendor/phpmailer/PHPMailer.php';
 require 'includes/vendor/phpmailer/SMTP.php';
