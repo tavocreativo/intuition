@@ -654,6 +654,7 @@ img {
   font-size: 15px;
   margin: 0 0 14px 68px;
   padding-left: 0;
+      color: black;
 }
 .contact-info-box h3 {
   font-size: 15px;
@@ -662,6 +663,7 @@ img {
   width: 102px;
   margin-right: 12px;
   line-height: 28px;
+      color: black;
 }
 .contact-info-box h3 i {
   font-style: normal;

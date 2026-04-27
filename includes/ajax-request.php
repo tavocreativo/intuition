@@ -101,7 +101,7 @@ class IntuitionAjaxRequest
 							"html" => $htmlClient
 						));
 	
-						if ($sendAdmin > 0 && $sendClient > 0) {
+						if ($sendAdmin === true && $sendClient === true) {
 							wp_send_json_success(array(
 								'message' => 'Mensaje enviado correctamente'
 							), 200);

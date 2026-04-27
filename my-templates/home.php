@@ -355,7 +355,13 @@ we were well fed and drunk all the time!</p>
 			<div class="col-lg-6 col-sm-7 wow fadeInLeft">
 				<div class="contact-info-box address clearfix">
 					<h3><i class=" icon-map-marker"></i>Dirección:</h3>
-					<span><?php the_field('direccion', 'option'); ?><br>Bogotá, Colombia.</span>
+					<?php
+						if(the_field('direccion', 'option')){ ?>
+							<span><?php the_field('direccion', 'option'); ?><br>
+						<?php
+						}
+					?>
+					Bogotá, Colombia.</span>
 				</div>
 				<div class="contact-info-box phone clearfix">
 					<h3><i class="fa-phone"></i>Teléfono:</h3>
